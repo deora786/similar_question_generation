@@ -1,0 +1,30 @@
+training:
+
+python -m nmt.nmt \
+    --src=en --tgt=vi \
+    --vocab_prefix=data/vocab  \
+    --train_prefix=data/train \
+    --dev_prefix=data/dev  \
+    --test_prefix=data/test \
+    --out_dir=model/nmt_model \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+
+
+
+
+testing:
+
+cat > /tmp/my_infer_file.vi
+# (copy and paste some sentences from /tmp/nmt_data/tst2013.vi)
+
+python -m nmt.nmt \
+    --out_dir=./model/nmt_model \
+    --inference_input_file=./test_data/my_infer_file.vi \
+    --inference_output_file=./model/nmt_model/output_infer
+
+cat /tmp/nmt_model/output_infer # To view the inference as output

@@ -1,0 +1,3 @@
+train.en  tst2012.en  tst2013.en  vocab.en
+train.vi  tst2012.vi  tst2013.vi  vocab.vi
+
